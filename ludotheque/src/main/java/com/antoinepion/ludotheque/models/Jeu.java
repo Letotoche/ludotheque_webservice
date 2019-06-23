@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.context.annotation.Lazy;
+
 @Entity
 public class Jeu {
 	
@@ -14,8 +16,6 @@ public class Jeu {
 	private Long id;
 	
 	private String nom;
-	private String editeur;
-	private String distributeur;
 	
 	@ManyToOne
 	private CategorieJeu categorie;
@@ -32,18 +32,7 @@ public class Jeu {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String getEditeur() {
-		return editeur;
-	}
-	public void setEditeur(String editeur) {
-		this.editeur = editeur;
-	}
-	public String getDistributeur() {
-		return distributeur;
-	}
-	public void setDistributeur(String distributeur) {
-		this.distributeur = distributeur;
-	}
+	
 	public CategorieJeu getCategorie() {
 		return categorie;
 	}
