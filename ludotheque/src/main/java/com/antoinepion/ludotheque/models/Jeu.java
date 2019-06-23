@@ -1,10 +1,25 @@
 package com.antoinepion.ludotheque.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Jeu {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private String nom;
 	private String editeur;
 	private String distributeur;
+	
+	@ManyToOne
 	private CategorieJeu categorie;
+	
 	private int accessibilite;
 	private int ageMin;
 	private int nbJoueursMin;
@@ -66,6 +81,13 @@ public class Jeu {
 		this.dureeMin = dureeMin;
 	}
 	
+
+	public Long getId() {
+		return id;
+	}
 	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 }

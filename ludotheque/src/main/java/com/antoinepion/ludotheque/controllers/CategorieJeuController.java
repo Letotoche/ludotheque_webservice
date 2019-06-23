@@ -12,35 +12,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.antoinepion.ludotheque.models.Jeu;
+import com.antoinepion.ludotheque.models.CategorieJeu;
 import com.antoinepion.ludotheque.repositories.CategorieJeuRepository;
-import com.antoinepion.ludotheque.repositories.JeuRepository;
 
 @RestController
-@RequestMapping("/api/v1/jeux")
-public class JeuController  {
+@RequestMapping("/api/v1/categorieJeu")
+public class CategorieJeuController {
 	
 	@Autowired
-	private JeuRepository jeuRepository;
-	
-	@Autowired
-	private CategorieJeuRepository categorieRepository;
+	private CategorieJeuRepository categorieJeuRepository;
 	
 	@GetMapping
-	public List<Jeu> list() {
-		List<Jeu> jeux = jeuRepository.findAll();
-		return jeux;
+	public List<CategorieJeu> list() {
+		return categorieJeuRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void create(@RequestBody Jeu jeu) {
-		jeuRepository.save(jeu);
+	public void create(@RequestBody CategorieJeu categorie) {
+		categorieJeuRepository.save(categorie);
 	}
 	
 	@GetMapping("/{id}")
-	public Jeu get(@PathVariable("id") long id) {
-		return jeuRepository.getOne(id);
+	public CategorieJeu get(@PathVariable("id") long id) {
+		return categorieJeuRepository.getOne(id);
 	}
 	
 }
